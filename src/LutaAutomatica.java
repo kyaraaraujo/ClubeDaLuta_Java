@@ -1,10 +1,19 @@
 import java.util.Random;
 
-public class Luta {
-    private Lutador lutador1;
-    private Lutador lutador2;
+public class LutaAutomatica {
+    private LutadorAutomatico lutador1;
+    private LutadorAutomatico lutador2;
 
-    void combate(Lutador lutador1, Lutador lutador2){
+    void combate(LutadorAutomatico lutador1, LutadorAutomatico lutador2){
+        System.out.println(" ");
+        System.out.println("*****************************");
+        System.out.print("Luta de ");
+        lutador1.status();
+        System.out.print(" contra ");
+        lutador2.status();
+        System.out.println("*****************************");
+        System.out.println(" ");
+
         while(lutador1.getEstamina() > 0 && lutador2.getEstamina() > 0){
             acao(lutador1);
             acao(lutador2);
@@ -23,18 +32,21 @@ public class Luta {
             }else if(lutador2.getAcao().equals("Ataque") && lutador1.getAcao().equals("Recua")){
                 lutador1.setEstamina(lutador1.getEstamina() - lutador2.getAtaque());
             }
+            System.out.println("");
 
 
         }
         System.out.println("-------------------------");
 
         if(lutador1.getEstamina() > lutador2.getEstamina()){
-            System.out.println("**** E o vencedor  da luta foi " + lutador1.getNome() + " ****");
+            System.out.println("**** E o vencedor  da luta foi  ****");
+            lutador1.status();
             lutador1.setVitorias(lutador1.getVitorias() + 1);
             lutador2.setDerrotas(lutador2.getDerrotas() + 1);
 
         }else if(lutador2.getEstamina() > lutador1.getEstamina()){
-            System.out.println("**** E o vencedor  da luta foi " + lutador2.getNome() + " ****");
+            System.out.println("**** E o vencedor  da luta foi ****");
+            lutador2.status();
             lutador2.setVitorias(lutador2.getVitorias() + 1);
             lutador1.setDerrotas(lutador1.getDerrotas() + 1);
         } else{
@@ -60,7 +72,7 @@ public class Luta {
 
 
         } else{
-           System.out.println("Lutador " + lutador1.getNome() + " é o detentor do cinturarão com "
+           System.out.println("Lutador " + lutador2.getNome() + " é o detentor do cinturarão com "
                    + "\n" + lutador2.getVitorias() + " Vitórias"
                    + "\n" + lutador2.getEmpates() + " Empates"
                    + "\n" + lutador2.getDerrotas() + " Derrotas");
@@ -70,7 +82,7 @@ public class Luta {
     }
 
 
-    void acao(Lutador l){
+    void acao(LutadorAutomatico l){
         Random aleatorio = new Random();
         int movimento = aleatorio.nextInt(3);
 

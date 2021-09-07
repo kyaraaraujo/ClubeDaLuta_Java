@@ -2,7 +2,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Lutador implements Lutar{
+public class LutadorAutomatico implements Lutar{
     private String nome;
     private double ataque;
     private double defesa;
@@ -13,45 +13,18 @@ public class Lutador implements Lutar{
     private int derrotas = 0;
 
 
-
-    public void setDerrotas(int derrotas) {
-        this.derrotas = derrotas;
-    }
-
-    public Lutador(String nome) {
+    public LutadorAutomatico(String nome) {
         this.nome = nome;
 
-        System.out.println("Distribua 100 pontos para ataque, defesa e estamina para o lutador " + this.getNome() );
-        Scanner scan = new Scanner(System.in);
+        Random aleatorio = new Random();
+        this.setAtaque(aleatorio.nextInt(100));
 
-        System.out.print("Ataque: ");
-        double valorAtaqueTemporario = scan.nextDouble();
-        if(valorAtaqueTemporario < 0 || valorAtaqueTemporario > 100){
-            do{
-                System.out.println("Valor de defesa deve ser entre 0 e 100 ");
-                System.out.print("Ataque: ");
-                valorAtaqueTemporario = scan.nextDouble();
-            }while(valorAtaqueTemporario < 0 || valorAtaqueTemporario > 100);
-        }
-        this.ataque = valorAtaqueTemporario;
+        double temp = 100 - this.getAtaque();
 
+        this.setDefesa(aleatorio.nextInt((int)temp));
 
-        System.out.println("Ainda tem " + (100 - this.ataque  ) + " para distribuir entre defesa e estamina");
+        this.setEstamina((100 - this.getAtaque() - this.getDefesa()) * 10);
 
-        System.out.print("Defesa: ");
-        double valorDefesaTemporario = scan.nextDouble();
-        if(valorDefesaTemporario  > (100 - this.ataque)){
-            do{
-                System.out.println("Valor de defesa deve ser menor que " + (100 - this.ataque));
-                System.out.print("Defesa: ");
-                valorDefesaTemporario = scan.nextDouble();
-            }while(valorDefesaTemporario  > (100 - this.ataque));
-        }
-        this.defesa = valorDefesaTemporario;
-
-
-        this.setEstamina( 100 + (100 - this.ataque - this.defesa) * 10);
-        System.out.println("Estamina: " + this.getEstamina());
         this.status();
     }
 
@@ -115,13 +88,17 @@ public class Lutador implements Lutar{
         return derrotas;
     }
 
+    public void setDerrotas(int derrotas) {
+        this.derrotas = derrotas;
+    }
+
     @Override
     public void atacar() {
         this.setAcao("Ataque");
         Random aleatorio = new Random();
         double valor = aleatorio.nextInt(100);
         double dano = this.ataque * (valor/100);
-        this.setEstamina(this.getEstamina() - dano/5);
+//        this.setEstamina(this.getEstamina() - dano/3);
         System.out.println(this.getNome() + " atacou com potência " + dano );
     }
 
@@ -131,7 +108,7 @@ public class Lutador implements Lutar{
         Random aleatorio = new Random();
         double valor = aleatorio.nextInt(100);
         double bloqueia = this.defesa * (valor/100);
-        this.setEstamina(this.getEstamina() - bloqueia/10);
+//        this.setEstamina(this.getEstamina() - bloqueia/2);
         System.out.println(this.getNome() + " defendeu com proteção " + bloqueia );
     }
 
@@ -143,7 +120,7 @@ public class Lutador implements Lutar{
 
 
     public void status() {
-        System.out.println("----------------");
+
         System.out.println("Lutador{" +
                 "nome = '" + this.nome + '\'' +
                 ", ataque = " + this.ataque +
