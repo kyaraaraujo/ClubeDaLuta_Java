@@ -60,7 +60,7 @@ public class Luta {
 
 
         } else{
-           System.out.println("Lutador " + lutador1.getNome() + " é o detentor do cinturarão com "
+           System.out.println("Lutador " + lutador2.getNome() + " é o detentor do cinturarão com "
                    + "\n" + lutador2.getVitorias() + " Vitórias"
                    + "\n" + lutador2.getEmpates() + " Empates"
                    + "\n" + lutador2.getDerrotas() + " Derrotas");

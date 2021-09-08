@@ -5,8 +5,8 @@ public class Main {
     //neste main o usuário irá atribuir valores de ataque,  defesa e estamina de cada lutador via console
     public static void main(String[] args) {
 
-        Lutador lutador1 = new Lutador("Rodrigo");
-        Lutador lutador2 = new Lutador("Paulo");
+        Lutador lutador1 = new Lutador("Marcelo");
+        Lutador lutador2 = new Lutador("Isabela");
 
         int rounds = 100; //colocar aqui quantas vezes os competidores lutarão
 
