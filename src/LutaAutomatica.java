@@ -58,26 +58,6 @@ public class LutaAutomatica {
         lutador1.setEstamina((100 - lutador1.getAtaque() - lutador1.getDefesa()) * 10);
         lutador2.setEstamina((100 - lutador2.getAtaque() - lutador2.getDefesa()) * 10);
 
-
-        System.out.println( " ********************************************************");
-       if(lutador1.getVitorias() == lutador2.getVitorias()){
-            System.out.println("Sem campeão absoluto");
-
-        } else if(lutador1.getVitorias() > lutador2.getVitorias()){
-            System.out.println("Lutador " + lutador1.getNome() + " é o detentor do cinturarão com "
-                    + "\n" + lutador1.getVitorias() + " Vitórias"
-                    + "\n" + lutador1.getEmpates() + " Empates"
-                    + "\n" + lutador1.getDerrotas() + " Derrotas");
-           lutador1.status();
-
-
-        } else{
-           System.out.println("Lutador " + lutador2.getNome() + " é o detentor do cinturarão com "
-                   + "\n" + lutador2.getVitorias() + " Vitórias"
-                   + "\n" + lutador2.getEmpates() + " Empates"
-                   + "\n" + lutador2.getDerrotas() + " Derrotas");
-           lutador2.status();
-        }
         System.out.println( " ********************************************************");
     }
 
